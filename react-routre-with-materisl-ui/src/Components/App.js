@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter, Link, Route  } from 'react-router-dom';
+import Writers from './Writers/writers';
 
 
 export default class extends Component{
@@ -12,12 +13,14 @@ export default class extends Component{
 
     // console.log(writers);
     this.setState({
-      writers 
+      writers: writers
     })
     
   }
 
     render(){
+      const {writers}=this.state;
+      
       return (
         <BrowserRouter>
           <Fragment>
@@ -38,10 +41,8 @@ export default class extends Component{
               </div>
             }/>
 
-            <Route path="/writers" render={() =>
-              <div>
-                Writers
-              </div>
+            <Route path="/writers" render={props =>
+              <Writers {...props} writers={writers} />
             } />
 
           
