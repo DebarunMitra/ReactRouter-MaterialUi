@@ -19,12 +19,12 @@ export default ({match: {url},writers})=>{
             } />
 
             <Route path={`${url}/:writerId`} render={
-                ({ match }) =>{
-                    const writer = writers.find(writer => writer.id === match.params.writerId)
+                props =>{
+                    const writer = writers.find(writer => writer.id === props.match.params.writerId)
                     if(!writer){
                         return <Redirect to="/404" component={NotFound} />
                     }
-                    return <Writer {...writer} />
+                    return <Writer {...props} {...writer} />
                 } 
                 }/>
             </Fragment>
