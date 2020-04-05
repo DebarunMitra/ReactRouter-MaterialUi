@@ -1,6 +1,7 @@
 import React,{Fragment} from 'react';
-import {Link, Route} from 'react-router-dom';
+import {Link, Route, Redirect} from 'react-router-dom';
 import Writer from './Writer/writer';
+import NotFound from '../Error/404';
 
 export default ({match: {url},writers})=>{
     return(
@@ -18,7 +19,13 @@ export default ({match: {url},writers})=>{
             } />
 
             <Route path={`${url}/:writerId`} render={
-                ({ match }) => <Writer {...writers.find(writer => writer.id === match.params.writerId)}/>
+                ({ match }) =>{
+                    const writer = writers.find(writer => writer.id === match.params.writerId)
+                    if(!writer){
+                        return <Redirect to="/404" component={NotFound} />
+                    }
+                    return <Writer {...writer} />
+                } 
                 }/>
             </Fragment>
     )

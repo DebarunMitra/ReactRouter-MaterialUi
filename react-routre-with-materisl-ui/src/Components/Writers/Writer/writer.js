@@ -1,6 +1,6 @@
 import React,{ Component, Fragment } from "react";
 
-export default ({ match, id, name, description, born, deceased, image})=>
+export default ({id, name, description, born, deceased, image})=>
 <Fragment>
     <div>
     <img src={image} alt={`${name}-${id}`} width='300' height='400' />
