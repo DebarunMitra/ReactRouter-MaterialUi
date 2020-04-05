@@ -1,5 +1,6 @@
 import React,{Fragment} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Route} from 'react-router-dom';
+import Writer from './Writer/writer';
 
 export default ({match: {url},writers})=>{
     return(
@@ -11,6 +12,14 @@ export default ({match: {url},writers})=>{
                 </li>
             )}
             </ul>
-        </Fragment>
+
+            <Route exact path={url} render={() =>
+            <h4>Please select one user !</h4>
+            } />
+
+            <Route path={`${url}/:writerId`} render={
+                ({ match }) => <Writer {...writers.find(writer => writer.id === match.params.writerId)}/>
+                }/>
+            </Fragment>
     )
 }
