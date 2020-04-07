@@ -15,7 +15,7 @@ const Header =()=>{
     <AppBar position="static">
         <Toolbar>
             <Typography className={classes.typographyStyles}>
-                This is the Header
+                Writers Wall
             </Typography>
             <EmojiEmotionsIcon />
         </Toolbar>
